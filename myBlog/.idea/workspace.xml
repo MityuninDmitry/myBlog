@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8a1fc6e-adbc-44f7-a39d-2436d97bffba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/myBlog/WebConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/myBlog/controller/HomeController.java" afterDir="false" />
+    <list default="true" id="e8a1fc6e-adbc-44f7-a39d-2436d97bffba" name="Changes" comment="Первичная настройка проекта: конфигурация, принятие http запросов, зависимости">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Commentary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Post.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Tag.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/myBlog/configuration/DataSourceConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/myBlog/configuration/ThymeleafConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/schema.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +41,9 @@
     "accountId": "7f38b741-36c0-47a6-87b9-51cf8fc35869"
   }
 }]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 0
 }]]></component>
@@ -67,6 +73,19 @@
       <option name="presentableId" value="Default" />
       <updated>1743271660144</updated>
     </task>
+    <task id="LOCAL-00001" summary="Первичная настройка проекта: конфигурация, принятие http запросов, зависимости">
+      <option name="closed" value="true" />
+      <created>1743272664004</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1743272664004</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Первичная настройка проекта: конфигурация, принятие http запросов, зависимости" />
+    <option name="LAST_COMMIT_MESSAGE" value="Первичная настройка проекта: конфигурация, принятие http запросов, зависимости" />
   </component>
 </project>
