@@ -1,12 +1,14 @@
 package model;
 
+import java.util.List;
+
 public class Post {
     private long id;
     private String name;
     private String description;
-    private Post[] tags;
+    private List<Tag> tags;
     private int likeCounter;
-    private Commentary[] commentaries;
+    private List<Commentary> commentaries;
     private byte[] image;
 
     public Post(Long id, String name) {
@@ -39,11 +41,11 @@ public class Post {
         this.description = description;
     }
 
-    public Post[] getTags() {
+    public List<Tag> getTags() {
         return tags;
     }
 
-    public void setTags(Post[] tags) {
+    public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
 
@@ -55,11 +57,11 @@ public class Post {
         this.likeCounter = likeCounter;
     }
 
-    public Commentary[] getCommentaries() {
+    public List<Commentary> getCommentaries() {
         return commentaries;
     }
 
-    public void setCommentaries(Commentary[] commentaries) {
+    public void setCommentaries(List<Commentary> commentaries) {
         this.commentaries = commentaries;
     }
 }
