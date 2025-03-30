@@ -31,4 +31,10 @@ public class H2CommentaryRepository implements CommentaryRepository{
         jdbcTemplate.update(query,
                 post_id, text, now);
     }
+
+    @Override
+    public void updateComment(Long id, String text) {
+        String query = "update commentary set text = ? where id = ?";
+        jdbcTemplate.update(query,text,id);
+    }
 }

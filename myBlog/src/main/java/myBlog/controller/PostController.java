@@ -26,12 +26,6 @@ public class PostController {
         return "PostDetails";
     }
 
-    @PostMapping("/{id}")
-    public String addComment(@PathVariable("id") Long id, @RequestParam("text") String text) {
-        // Логика сохранения комментария в базе данных
-        service.addCommentToPost(id, text);
-        // Перенаправление обратно на страницу поста
-        return "redirect:/posts/" + id;
-    }
+
 
 }

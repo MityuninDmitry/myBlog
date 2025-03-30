@@ -6,23 +6,68 @@
   <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const addCommentBtn = document.getElementById("add-comment-btn");
-      const commentForm = document.getElementById("comment-form");
-      const commentText = document.getElementById("comment-text");
+  const addCommentBtn = document.getElementById("add-comment-btn");
+  const commentForm = document.getElementById("comment-form");
+  const commentText = document.getElementById("comment-text");
 
-      // Показать форму при нажатии кнопки "Добавить комментарий"
-      addCommentBtn.addEventListener("click", function () {
-        commentForm.style.display = "block"; // Показываем форму
-        commentText.focus(); // Ставим фокус на текстовую область
-      });
+  // Показать форму при нажатии кнопки "Добавить комментарий"
+  addCommentBtn.addEventListener("click", function () {
+    commentForm.style.display = "block"; // Показываем форму
+    commentText.focus(); // Ставим фокус на текстовую область
+  });
 
-      // Отправка формы при нажатии Ctrl + Enter
-      commentText.addEventListener("keydown", function (event) {
-        if (event.ctrlKey && event.key === "Enter") {
-          commentForm.submit(); // Отправляем форму
-        }
-      });
+  // Отправка формы при нажатии Ctrl + Enter
+  commentText.addEventListener("keydown", function (event) {
+    if (event.ctrlKey && event.key === "Enter") {
+      commentForm.submit(); // Отправляем форму
+    }
+  });
+
+  // Обработчик нажатия кнопки "Редактировать"
+  document.querySelectorAll(".edit-comment-btn").forEach(function (button) {
+    button.addEventListener("click", function () {
+      const commentId = this.getAttribute("data-id");
+
+      // Скрыть текст комментария
+      const commentElement = document.querySelector(`.comment-text[data-id="${commentId}"]`);
+      if (commentElement) commentElement.style.display = "none";
+
+      // Показать форму редактирования
+      const editForm = document.getElementById(`edit-form-${commentId}`);
+      if (editForm) editForm.style.display = "block";
+
+      // Добавить обработчик нажатия Ctrl + Enter для отправки формы редактирования
+      const editTextarea = editForm.querySelector("textarea");
+
+      if (editTextarea) {
+        editTextarea.addEventListener("keydown", function (event) {
+          if (event.ctrlKey && event.key === "Enter") {
+            editForm.submit(); // Отправляем форму редактирования
+          }
+        });
+      }
     });
+
+  });
+
+  // Обработчик нажатия кнопки "Отмена"
+  document.querySelectorAll(".cancel-edit-btn").forEach(function (button) {
+    button.addEventListener("click", function () {
+      const commentId = this.getAttribute("data-id");
+
+      // Показать текст комментария
+      const commentElement = document.querySelector(`.comment-text[data-id="${commentId}"]`);
+      if (commentElement) commentElement.style.display = "block";
+
+      // Скрыть форму редактирования
+      const editForm = document.getElementById(`edit-form-${commentId}`);
+      if (editForm)  editForm.style.display = "none";
+
+
+    });
+  });
+});
+
   </script>
 </head>
 <body>
@@ -54,14 +99,32 @@
         <!-- Кнопка добавления комментария -->
         <button id="add-comment-btn">Добавить комментарий</button>
       </div>
-      <p class="comment-text" th:each="comment : ${post.commentaries}" th:utext="${#strings.replace(comment.text, '\n', '<br/>')}">
-      </p>
 
-      <!-- Форма для ввода комментария (по умолчанию скрыта) -->
-      <form id="comment-form" th:action="@{/posts/{id}(id=${post.id})}" method="post" style="display: none;">
+      <!-- Список комментариев -->
+      <div th:each="comment : ${post.commentaries}" class="comment-block">
+        <!-- Отображение текста комментария -->
+        <div class="post-meta" >
+          <p class="comment-text" th:utext="${#strings.replace(comment.text, '\n', '<br/>')}"></p>
+          <!-- Кнопка "Редактировать" -->
+          <button class="edit-comment-btn" th:data-id="${comment.id}">Редактировать</button>
+        </div>
+        <!-- Форма редактирования комментария (по умолчанию скрыта) -->
+        <form th:id="'edit-form-' + ${comment.id}"
+              th:action="@{/posts/commentary/update/{id}(id=${comment.id})}"
+              method="post"
+              style="display: none;">
+          <!-- Скрытое поле для id поста -->
+          <input type="hidden" name="post_id" th:value="${post.id}">
+          <textarea th:id="'edit-textarea-' + ${comment.id}"
+                name="text" rows="3" th:text="${comment.text}"></textarea>
+          <button type="button" class="cancel-edit-btn" th:data-id="${comment.id}">Отмена</button>
+        </form>
+      </div>
+
+      <!-- Форма для добавления комментария (по умолчанию скрыта) -->
+      <form id="comment-form" th:action="@{/posts/commentary/{id}(id=${post.id})}" method="post" style="display: none;">
         <textarea id="comment-text" name="text" rows="3" placeholder="Напишите комментарий..."></textarea>
       </form>
-
     </div>
   </div>
 </div>
