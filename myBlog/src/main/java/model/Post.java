@@ -13,18 +13,19 @@ public class Post {
     private List<Tag> tags;
     private int likeCounter;
     private List<Commentary> commentaries;
-    private byte[] image;
     private String imageURL;
     private LocalDateTime createDateTime;
 
-    public Post(long id, String name, String description, List<Tag> tags, int likeCounter, List<Commentary> commentaries, byte[] image, String imageURL, LocalDateTime createDateTime) {
+    public Post() {
+
+    }
+    public Post(long id, String name, String description, List<Tag> tags, int likeCounter, List<Commentary> commentaries, String imageURL, LocalDateTime createDateTime) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.tags = tags;
         this.likeCounter = likeCounter;
         this.commentaries = commentaries;
-        this.image = image;
         this.imageURL = imageURL;
         this.createDateTime = createDateTime;
     }
@@ -76,14 +77,6 @@ public class Post {
 
     public void setCommentaries(List<Commentary> commentaries) {
         this.commentaries = commentaries;
-    }
-
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
     }
 
     public LocalDateTime getCreateDateTime() {

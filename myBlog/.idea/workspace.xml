@@ -4,14 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8a1fc6e-adbc-44f7-a39d-2436d97bffba" name="Changes" comment="Шаблон отображения постов">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/PostDetails.html" afterDir="false" />
+    <list default="true" id="e8a1fc6e-adbc-44f7-a39d-2436d97bffba" name="Changes" comment="Вынес css в отдельно, добавил контроллер отображения поста и шаблон под него">
+      <change afterPath="$PROJECT_DIR$/src/main/java/myBlog/repository/CommentaryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/myBlog/repository/H2CommentaryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/myBlog/repository/H2PostRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/myBlog/repository/H2TagRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/myBlog/repository/PostRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/myBlog/repository/TagRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/myBlog/repository/mapper/CommentaryRowMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/myBlog/repository/mapper/PostRowMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/myBlog/repository/mapper/TagRowMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/myBlog/service/PostService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Commentary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Commentary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Tag.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/myBlog/WebConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/myBlog/WebConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/myBlog/configuration/DataSourceConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/myBlog/configuration/DataSourceConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/myBlog/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/myBlog/controller/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/myBlog/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/myBlog/controller/PostController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Posts.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Posts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/schema.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +34,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -117,7 +131,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743345417245</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Вынес css в отдельно, добавил контроллер отображения поста и шаблон под него">
+      <option name="closed" value="true" />
+      <created>1743352137430</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1743352137430</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -125,6 +147,7 @@
     <MESSAGE value="Добавил первичную модель данных и конфигурации работы с шаблонами и БД" />
     <MESSAGE value="Сменил тип полей с массивов на листы" />
     <MESSAGE value="Шаблон отображения постов" />
-    <option name="LAST_COMMIT_MESSAGE" value="Шаблон отображения постов" />
+    <MESSAGE value="Вынес css в отдельно, добавил контроллер отображения поста и шаблон под него" />
+    <option name="LAST_COMMIT_MESSAGE" value="Вынес css в отдельно, добавил контроллер отображения поста и шаблон под него" />
   </component>
 </project>

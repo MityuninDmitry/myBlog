@@ -13,6 +13,9 @@ public class Commentary {
         createDateTime = LocalDateTime.now();
     }
 
+    public Commentary() {
+    }
+
     public long getId() {
         return id;
     }
