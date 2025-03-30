@@ -4,6 +4,26 @@
   <meta charset="UTF-8">
   <title>Пост</title>
   <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const addCommentBtn = document.getElementById("add-comment-btn");
+      const commentForm = document.getElementById("comment-form");
+      const commentText = document.getElementById("comment-text");
+
+      // Показать форму при нажатии кнопки "Добавить комментарий"
+      addCommentBtn.addEventListener("click", function () {
+        commentForm.style.display = "block"; // Показываем форму
+        commentText.focus(); // Ставим фокус на текстовую область
+      });
+
+      // Отправка формы при нажатии Ctrl + Enter
+      commentText.addEventListener("keydown", function (event) {
+        if (event.ctrlKey && event.key === "Enter") {
+          commentForm.submit(); // Отправляем форму
+        }
+      });
+    });
+  </script>
 </head>
 <body>
 <div class="post-container">
@@ -23,14 +43,25 @@
     <!-- Список тегов, количество комментариев и лайков -->
     <div class="post-meta">
       <p>Лайки: <span th:text="${post.likeCounter}">0</span></p>
+      <a th:href="@{/posts/like/{id}(id=${post.id})}" th:text="'Поставить лайк'"></a>
     </div>
     <!-- Описание -->
     <p class="post-description" th:text="${post.description}">Post Description</p>
     <!-- Список комментариев -->
     <div>
-      <h2>Комментарии:</h2>
-      <p th:each="comment : ${post.commentaries}" th:text="${comment.text} + ' '">
+      <div class="post-meta">
+        <h2>Комментарии:</h2>
+        <!-- Кнопка добавления комментария -->
+        <button id="add-comment-btn">Добавить комментарий</button>
+      </div>
+      <p class="comment-text" th:each="comment : ${post.commentaries}" th:utext="${#strings.replace(comment.text, '\n', '<br/>')}">
       </p>
+
+      <!-- Форма для ввода комментария (по умолчанию скрыта) -->
+      <form id="comment-form" th:action="@{/posts/{id}(id=${post.id})}" method="post" style="display: none;">
+        <textarea id="comment-text" name="text" rows="3" placeholder="Напишите комментарий..."></textarea>
+      </form>
+
     </div>
   </div>
 </div>

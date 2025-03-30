@@ -38,6 +38,14 @@ public class PostService {
         return post;
     }
 
+    public void incrementLikeCounterById(Long id) {
+        this.postRepository.incrementLikeCounterById(id);
+    }
+
+    public void addCommentToPost(Long post_id, String text) {
+        this.commentaryRepository.addCommentToPost(post_id, text);
+    }
+
     public List<Commentary> loadCommentaries(long post_id) {
         return commentaryRepository.getByPostId(post_id);
     }

@@ -6,9 +6,7 @@ import model.Tag;
 import myBlog.service.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -27,4 +25,13 @@ public class PostController {
         model.addAttribute("post", post);
         return "PostDetails";
     }
+
+    @PostMapping("/{id}")
+    public String addComment(@PathVariable("id") Long id, @RequestParam("text") String text) {
+        // Логика сохранения комментария в базе данных
+        service.addCommentToPost(id, text);
+        // Перенаправление обратно на страницу поста
+        return "redirect:/posts/" + id;
+    }
+
 }

@@ -30,6 +30,11 @@ public class H2PostRepository  implements PostRepository{
         return post;
     }
 
+    @Override
+    public void incrementLikeCounterById(Long id) {
+        String query = "update Post SET likeCounter = likeCounter + 1 where id = ?";
+        jdbcTemplate.update(query,id);
+    }
 
 
 }
