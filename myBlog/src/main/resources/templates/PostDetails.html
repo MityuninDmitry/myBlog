@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Пост</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="post-container">
+  <div class="post">
+    <!-- Название поста -->
+    <h2 class="post-title" th:text="${post.name}">Post Name</h2>
+
+    <!-- Изображение -->
+    <img class="post-image" th:src="${post.imageURL}" alt="Example Image" />
+
+    <!-- Список тегов, количество комментариев и лайков -->
+    <div class="post-meta">
+      <p class="tags">
+        <span th:each="tag : ${post.tags}" th:text="'#' + ${tag.name} + ' '"></span>
+      </p>
+    </div>
+    <!-- Список тегов, количество комментариев и лайков -->
+    <div class="post-meta">
+      <p>Лайки: <span th:text="${post.likeCounter}">0</span></p>
+    </div>
+    <!-- Описание -->
+    <p class="post-description" th:text="${post.description}">Post Description</p>
+    <!-- Список комментариев -->
+    <div>
+      <h2>Комментарии:</h2>
+      <p th:each="comment : ${post.commentaries}" th:text="${comment.text} + ' '">
+      </p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
