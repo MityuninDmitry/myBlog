@@ -1,5 +1,9 @@
 package model;
 
+import org.springframework.beans.factory.annotation.Value;
+
+import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Post {
@@ -10,12 +14,21 @@ public class Post {
     private int likeCounter;
     private List<Commentary> commentaries;
     private byte[] image;
+    private String imageURL;
+    private LocalDateTime createDateTime;
 
-    public Post(Long id, String name) {
+    public Post(long id, String name, String description, List<Tag> tags, int likeCounter, List<Commentary> commentaries, byte[] image, String imageURL, LocalDateTime createDateTime) {
         this.id = id;
         this.name = name;
-        likeCounter = 0;
+        this.description = description;
+        this.tags = tags;
+        this.likeCounter = likeCounter;
+        this.commentaries = commentaries;
+        this.image = image;
+        this.imageURL = imageURL;
+        this.createDateTime = createDateTime;
     }
+
 
     public long getId() {
         return id;
@@ -63,5 +76,29 @@ public class Post {
 
     public void setCommentaries(List<Commentary> commentaries) {
         this.commentaries = commentaries;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public LocalDateTime getCreateDateTime() {
+        return createDateTime;
+    }
+
+    public void setCreateDateTime(LocalDateTime createDateTime) {
+        this.createDateTime = createDateTime;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 }

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Мой блог</title>
+        <style>
+            .post-container {
+                display: flex;
+                justify-content: center; /* Центрирует содержимое по горизонтали */
+                margin: 20px 0; /* Отступы сверху и снизу */
+            }
+
+            /* Стиль для каждого поста */
+            .post {
+                width: 600px; /* Ширина поста */
+                background-color: #f9f9f9; /* Светлый фон */
+                border: 1px solid #ddd; /* Тонкая рамка */
+                border-radius: 8px; /* Закругленные углы */
+                padding: 20px; /* Внутренние отступы */
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень */
+            }
+
+            /* Название поста */
+            .post-title {
+                text-align: left; /* Выравнивание слева */
+                font-size: 24px; /* Размер шрифта */
+                margin-bottom: 10px; /* Отступ снизу */
+            }
+
+            /* Изображение поста */
+            .post-image {
+                display: block; /* Делает изображение блочным элементом */
+                margin: 10px auto; /* Центрирует изображение горизонтально */
+                width: 100%; /* Изображение занимает всю ширину контейнера */
+                max-height: 400px; /* Максимальная высота изображения */
+                object-fit: cover; /* Сохраняет пропорции изображения */
+                border-radius: 8px; /* Закругленные углы изображения */
+            }
+
+            /* Метаданные поста (теги, лайки, комментарии) */
+            .post-meta {
+                display: flex;
+                justify-content: space-between; /* Равномерное распределение элементов по строке */
+                align-items: center; /* Выравнивание по вертикали */
+                margin-top: 15px; /* Отступ сверху */
+                font-size: 14px; /* Размер шрифта для метаданных */
+                color: #555; /* Серый цвет текста */
+            }
+
+            /* Теги */
+            .tags span {
+                color: #007bff; /* Синий цвет для тегов */
+                margin-right: 5px; /* Отступ между тегами */
+            }
+
+            /* Описание поста */
+            .post-description {
+                margin-top: 20px; /* Отступ сверху */
+                font-size: 16px; /* Размер шрифта для текста описания */
+                line-height: 1.6; /* Межстрочный интервал для удобства чтения */
+            }
+        </style>
+
+    </head>
+    <body>
+        <div>
+            Добро пожаловать в мой блог!
+        </div>
+
+        <div th:each="post : ${posts}" class="post-container">
+            <div class="post">
+                <!-- Название поста -->
+                <h2 class="post-title" th:text="${post.name}">Post Name</h2>
+
+                <!-- Изображение -->
+                <img class="post-image" th:src="${post.imageURL}" alt="Example Image" />
+
+                <!-- Список тегов, количество комментариев и лайков -->
+                <div class="post-meta">
+                    <p class="tags">
+                        <span th:each="tag : ${post.tags}" th:text="'#' + ${tag.name} + ' '"></span>
+                    </p>
+                </div>
+                <!-- Список тегов, количество комментариев и лайков -->
+                <div class="post-meta">
+                    <p>Комментариев: <span th:text="${post.commentaries.size()}">0</span></p>
+                    <p>Лайки: <span th:text="${post.likeCounter}">0</span></p>
+                </div>
+
+                <!-- Описание -->
+                <p class="post-description" th:text="${post.description}">Post Description</p>
+            </div>
+        </div>
+
+    </body>
+</html>
