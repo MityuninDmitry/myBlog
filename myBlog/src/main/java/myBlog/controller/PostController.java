@@ -1,7 +1,7 @@
 package myBlog.controller;
 
 import myBlog.model.Post;
-import myBlog.model.PostRequest;
+import myBlog.model.PostRecord;
 import myBlog.service.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,24 +34,24 @@ public class PostController {
     }
 
     @PostMapping("/new")
-    public String createNewPost(@ModelAttribute PostRequest postRequest) {
-        service.createNewPost(postRequest);
+    public String createNewPost(@ModelAttribute PostRecord postRecord) {
+        service.createNewPost(postRecord);
         return "redirect:/";
     }
 
     @PostMapping("/update/{id}")
-    public String updatePost(@PathVariable("id") Long id, @ModelAttribute PostRequest postRequest) {
-        service.updatePost(id, postRequest);
+    public String updatePost(@PathVariable("id") Long id, @ModelAttribute PostRecord postRecord) {
+        service.updatePost(id, postRecord);
         service.deleteTagsByPostId(id);
-        service.createTagsInPost(id,postRequest.tags());
+        service.createTagsInPost(id, postRecord.tags());
         return "redirect:/posts/" + id;
     }
 
     @GetMapping("/addManyPosts")
     public String addManyPosts() {
         for (int i = 1; i <= 150; i++) {
-            PostRequest postRequest = new PostRequest("Number " + i, "Description " + i, "https://cs13.pikabu.ru/post_img/big/2024/05/16/9/1715872409131237032.jpg", "Tag1, Tag2, Tag" + i);
-            service.createNewPost(postRequest);
+            PostRecord postRecord = new PostRecord("Number " + i, "Description " + i, "https://cs13.pikabu.ru/post_img/big/2024/05/16/9/1715872409131237032.jpg", "Tag1, Tag2, Tag" + i);
+            service.createNewPost(postRecord);
         }
         return "redirect:/";
     }

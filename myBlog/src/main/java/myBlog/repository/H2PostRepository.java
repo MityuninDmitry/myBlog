@@ -1,9 +1,7 @@
 package myBlog.repository;
 
-import myBlog.model.Commentary;
 import myBlog.model.Post;
-import myBlog.model.PostRequest;
-import myBlog.model.Tag;
+import myBlog.model.PostRecord;
 import myBlog.repository.mapper.PostRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -51,7 +49,7 @@ public class H2PostRepository  implements PostRepository{
     }
 
     @Override
-    public Long create(PostRequest postRequest) {
+    public Long create(PostRecord postRecord) {
         LocalDateTime now = LocalDateTime.now();
         String query = "insert into post(name, description, likeCounter, imageURL, createDateTime) values(?, ?, ?, ?, ?)";
 
@@ -61,10 +59,10 @@ public class H2PostRepository  implements PostRepository{
         // Выполняем запрос с использованием PreparedStatement
         jdbcTemplate.update(connection -> {
             var ps = connection.prepareStatement(query, new String[]{"id"}); // Указываем, что хотим вернуть столбец "id"
-            ps.setString(1, postRequest.name());
-            ps.setString(2, postRequest.description());
+            ps.setString(1, postRecord.name());
+            ps.setString(2, postRecord.description());
             ps.setInt(3, 0); // likeCounter
-            ps.setString(4, postRequest.imageURL());
+            ps.setString(4, postRecord.imageURL());
             ps.setObject(5, now);
             return ps;
         }, keyHolder);
@@ -74,9 +72,9 @@ public class H2PostRepository  implements PostRepository{
     }
 
     @Override
-    public void update(Long id, PostRequest postRequest) {
+    public void update(Long id, PostRecord postRecord) {
         String query = "update Post SET name = ?, description = ?, imageURL = ? where id = ?";
-        jdbcTemplate.update(query,postRequest.name(), postRequest.description(), postRequest.imageURL(), id);
+        jdbcTemplate.update(query, postRecord.name(), postRecord.description(), postRecord.imageURL(), id);
     }
 
     @Override

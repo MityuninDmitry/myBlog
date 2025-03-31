@@ -2,7 +2,7 @@ package myBlog.service;
 
 import myBlog.model.Commentary;
 import myBlog.model.Post;
-import myBlog.model.PostRequest;
+import myBlog.model.PostRecord;
 import myBlog.model.Tag;
 import myBlog.repository.CommentaryRepository;
 import myBlog.repository.PostRepository;
@@ -61,13 +61,13 @@ public class PostService {
         return tagRepository.getByPostId(post_id);
     }
 
-    public void createNewPost(PostRequest postRequest) {
-        Long post_id = postRepository.create(postRequest);
-        this.createTagsInPost(post_id, postRequest.tags());
+    public void createNewPost(PostRecord postRecord) {
+        Long post_id = postRepository.create(postRecord);
+        this.createTagsInPost(post_id, postRecord.tags());
     }
 
-    public void updatePost(Long id, PostRequest postRequest) {
-        postRepository.update(id, postRequest);
+    public void updatePost(Long id, PostRecord postRecord) {
+        postRepository.update(id, postRecord);
     }
 
     public void deleteTagsByPostId(Long id) {
