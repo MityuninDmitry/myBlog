@@ -3,10 +3,7 @@ package myBlog.controller;
 import myBlog.service.CommentaryService;
 import myBlog.service.PostService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/posts/commentary")
@@ -29,6 +26,12 @@ public class CommentaryController {
         // Логика сохранения комментария в базе данных
         service.updateComment(id, text);
         // Перенаправление обратно на страницу поста
+        return "redirect:/posts/" + post_id;
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteById(@PathVariable("id") Long id, @RequestParam("post_id") Long post_id) {
+        service.deleteById(id);
         return "redirect:/posts/" + post_id;
     }
 }

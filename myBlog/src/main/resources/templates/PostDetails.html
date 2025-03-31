@@ -86,7 +86,6 @@
         function hideForm() {
             document.getElementById('postForm').style.display = 'none';
         }
-
   </script>
 </head>
 <body>
@@ -122,7 +121,6 @@
       </form>
     </div>
 
-
     <!-- Изображение -->
     <img class="post-image" th:src="${post.imageURL}" alt="Example Image" />
     <!-- Список тегов, количество комментариев и лайков -->
@@ -149,10 +147,14 @@
       <!-- Список комментариев -->
       <div th:each="comment : ${post.commentaries}" class="comment-block">
         <!-- Отображение текста комментария -->
+
         <div class="post-meta" >
           <p class="comment-text" th:utext="${#strings.replace(comment.text, '\n', '<br/>')}"></p>
-          <!-- Кнопка "Редактировать" -->
-          <button class="edit-comment-btn" th:data-id="${comment.id}">Редактировать</button>
+          <div>
+            <!-- Кнопка "Редактировать" -->
+            <button class="edit-comment-btn" th:data-id="${comment.id}">Редактировать</button>
+            <a th:href="@{/posts/commentary/delete/{id}(id=${comment.id}, post_id=${post.id})}" th:text="'Удалить'"></a>
+          </div>
         </div>
         <!-- Форма редактирования комментария (по умолчанию скрыта) -->
         <form th:id="'edit-form-' + ${comment.id}"

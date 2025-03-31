@@ -18,4 +18,8 @@ public class CommentaryService {
         this.commentaryRepository.updateComment(id, text);
     }
 
+    public void deleteById(Long id) {
+        commentaryRepository.deleteById(id);
+    }
+
 }

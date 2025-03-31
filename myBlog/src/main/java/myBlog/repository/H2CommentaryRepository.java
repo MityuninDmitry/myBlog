@@ -37,4 +37,10 @@ public class H2CommentaryRepository implements CommentaryRepository{
         String query = "update commentary set text = ? where id = ?";
         jdbcTemplate.update(query,text,id);
     }
+
+    @Override
+    public void deleteById(Long id) {
+        String query = "delete commentary where id = ?";
+        jdbcTemplate.update(query,id);
+    }
 }
