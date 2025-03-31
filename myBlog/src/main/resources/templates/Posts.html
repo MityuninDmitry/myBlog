@@ -5,12 +5,51 @@
         <meta charset="UTF-8">
         <title>Мой блог</title>
         <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+        <script>
+            // Функция для показа формы
+            function showForm() {
+                document.getElementById('postForm').classList.add('active');
+            }
+
+            // Функция для скрытия формы и очистки данных
+            function hideForm() {
+                const form = document.getElementById('postForm');
+                form.classList.remove('active');
+                form.querySelectorAll('input, textarea').forEach(input => input.value = '');
+            }
+        </script>
+
     </head>
     <body>
-        <div>
-            Добро пожаловать в мой блог!
+        <div class="post-container">
+            <div class="post">
+                <div class="post-meta">
+                    Добро пожаловать в мой блог!
+                    <button onclick="showForm()">Добавить пост</button>
+                </div>
+            </div>
         </div>
 
+        <!-- Форма создания нового поста -->
+        <div class="form-container" id="postForm">
+            <form th:action="@{/posts/new}" th:method="post">
+                <label for="name">Название:</label>
+                <input type="text" id="name" name="name" placeholder="Введите название" required>
+
+                <label for="description">Описание:</label>
+                <textarea id="description" name="description" placeholder="Введите описание" required></textarea>
+
+                <label for="tags">Теги (через запятую):</label>
+                <input type="text" id="tags" name="tags" placeholder="Введите теги">
+
+                <label for="imageURL">URL изображения:</label>
+                <input type="url" id="imageURL" name="imageURL" placeholder="Введите URL изображения">
+
+                <button type="submit" class="save-btn">Сохранить</button>
+                <button type="button" class="cancel-btn" onclick="hideForm()">Отмена</button>
+            </form>
+        </div>
+        <!-- Лента постов -->
         <div th:each="post : ${posts}" class="post-container">
             <div class="post">
                 <!-- Название поста -->

@@ -2,6 +2,7 @@ package myBlog.service;
 
 import myBlog.model.Commentary;
 import myBlog.model.Post;
+import myBlog.model.PostRequest;
 import myBlog.model.Tag;
 import myBlog.repository.CommentaryRepository;
 import myBlog.repository.PostRepository;
@@ -47,5 +48,15 @@ public class PostService {
     }
     public List<Tag> loadTags(long post_id) {
         return tagRepository.getByPostId(post_id);
+    }
+
+    public void createNewPost(PostRequest postRequest) {
+        Long post_id = postRepository.create(postRequest);
+
+        String[] tags = postRequest.tags().replaceAll("#","").split(",");
+        for (String tag: tags) {
+            String newTag = tag.trim().replaceAll("\\s{1,}","_");
+            tagRepository.createLinkedTag(post_id, newTag);
+        }
     }
 }

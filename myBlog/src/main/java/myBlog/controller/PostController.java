@@ -1,6 +1,7 @@
 package myBlog.controller;
 
 import myBlog.model.Post;
+import myBlog.model.PostRequest;
 import myBlog.service.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,9 @@ public class PostController {
         return "PostDetails";
     }
 
-
-
+    @PostMapping("/new")
+    public String createNewPost(@ModelAttribute PostRequest postRequest) {
+        service.createNewPost(postRequest);
+        return "redirect:/";
+    }
 }

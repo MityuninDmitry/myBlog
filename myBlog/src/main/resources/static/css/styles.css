@@ -3,7 +3,6 @@
     justify-content: center; /* Центрирует содержимое по горизонтали */
     margin: 20px 0; /* Отступы сверху и снизу */
 }
-
 /* Стиль для каждого поста */
 .post {
     width: 600px; /* Ширина поста */
@@ -13,14 +12,12 @@
     padding: 20px; /* Внутренние отступы */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Легкая тень */
 }
-
 /* Название поста */
 .post-title {
     text-align: left; /* Выравнивание слева */
     font-size: 24px; /* Размер шрифта */
     margin-bottom: 10px; /* Отступ снизу */
 }
-
 /* Изображение поста */
 .post-image {
     display: block; /* Делает изображение блочным элементом */
@@ -30,7 +27,6 @@
     object-fit: cover; /* Сохраняет пропорции изображения */
     border-radius: 8px; /* Закругленные углы изображения */
 }
-
 /* Метаданные поста (теги, лайки, комментарии) */
 .post-meta {
     display: flex;
@@ -40,13 +36,11 @@
     font-size: 14px; /* Размер шрифта для метаданных */
     color: #555; /* Серый цвет текста */
 }
-
 /* Теги */
 .tags span {
     color: #007bff; /* Синий цвет для тегов */
     margin-right: 5px; /* Отступ между тегами */
 }
-
 /* Описание поста */
 .post-description {
     margin-top: 20px; /* Отступ сверху */
@@ -57,4 +51,45 @@
 .comment-text {
   white-space: pre-wrap; /* Сохраняет переносы строк */
   word-wrap: break-word; /* Перенос длинных слов */
+}
+
+/* Простые стили для формы */
+.form-container {
+    display: none; /* Форма скрыта по умолчанию */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 400px;
+}
+
+.form-container.active {
+    display: block; /* Показать форму */
+}
+
+.form-container input,
+.form-container textarea,
+.form-container button {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.form-container button {
+    cursor: pointer;
+}
+
+.form-container .cancel-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.form-container .save-btn {
+    background-color: #4CAF50;
+    color: white;
 }
