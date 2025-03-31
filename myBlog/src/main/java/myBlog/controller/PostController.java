@@ -20,7 +20,6 @@ public class PostController {
     }
     @GetMapping("/{id}")
     public String getPostById(@PathVariable("id") Long id, Model model) {
-
         Post post = service.getById(id);
         String tagsArrayString = post.getTags().stream().map(tag -> tag.getName()).collect(Collectors.joining(", "));
         model.addAttribute("post", post);
@@ -30,7 +29,6 @@ public class PostController {
 
     @GetMapping("/delete/{id}")
     public String deleteById(@PathVariable("id") Long id) {
-
         service.deleteById(id);
         return "redirect:/";
     }
@@ -47,5 +45,14 @@ public class PostController {
         service.deleteTagsByPostId(id);
         service.createTagsInPost(id,postRequest.tags());
         return "redirect:/posts/" + id;
+    }
+
+    @GetMapping("/addManyPosts")
+    public String addManyPosts() {
+        for (int i = 1; i <= 150; i++) {
+            PostRequest postRequest = new PostRequest("Number " + i, "Description " + i, "https://cs13.pikabu.ru/post_img/big/2024/05/16/9/1715872409131237032.jpg", "Tag1, Tag2, Tag" + i);
+            service.createNewPost(postRequest);
+        }
+        return "redirect:/";
     }
 }

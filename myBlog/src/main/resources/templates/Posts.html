@@ -26,6 +26,23 @@
                 <div class="post-meta">
                     Добро пожаловать в мой блог!
                     <button onclick="showForm()">Добавить пост</button>
+                    <a th:href="@{/posts/addManyPosts}" th:text="'Создать много постов'"></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ссылки для выбора размера страницы -->
+        <div class="post-container">
+            <div class="post">
+                <div class="post-meta">
+                    <p>Постов на странице: <span th:text="${pagination.size}"></span></p>
+                    <p>Страница: <span th:text="${pagination.page}"></span></p>
+                    <div>
+                        <a th:href="@{/pagination?size=10&page=0}" th:text="'10'"></a> |
+                        <a th:href="@{/pagination?size=20&page=0}" th:text="'20'"></a> |
+                        <a th:href="@{/pagination?size=50&page=0}" th:text="'50'"></a>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -76,6 +93,24 @@
                 <p class="post-description" th:text="${post.description}">Post Description</p>
             </div>
         </div>
+        <!-- Ссылки назад/далее -->
+        <div class="post-container">
+            <div class="post">
+                <div class="post-meta">
+                    <!-- Ссылка "Назад" -->
+                    <a th:href="@{/pagination(size=${pagination.size}, page=${pagination.page > 0 ? pagination.page - 1 : 0})}"
+                       th:text="'<< Назад'">
+                    </a>
 
+                    <p>Постов на странице: <span th:text="${pagination.size}"></span></p>
+                    <p>Страница: <span th:text="${pagination.page}"></span></p>
+
+                    <!-- Ссылка "Далее" -->
+                    <a th:href="@{/pagination(size=${pagination.size}, page=${pagination.page + 1})}"
+                       th:text="'Далее >>'">
+                    </a>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
