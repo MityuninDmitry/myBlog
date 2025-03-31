@@ -1,6 +1,6 @@
 package myBlog.repository;
 
-import model.Post;
+import myBlog.model.Post;
 import myBlog.repository.mapper.PostRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

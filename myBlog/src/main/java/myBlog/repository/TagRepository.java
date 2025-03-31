@@ -1,6 +1,6 @@
 package myBlog.repository;
 
-import model.Tag;
+import myBlog.model.Tag;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package model;
+package myBlog.model;
 
 public class Tag {
     private long id;

@@ -1,6 +1,6 @@
 package myBlog.repository;
 
-import model.Commentary;
+import myBlog.model.Commentary;
 import myBlog.repository.mapper.CommentaryRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

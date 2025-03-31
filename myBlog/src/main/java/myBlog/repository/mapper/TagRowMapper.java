@@ -1,6 +1,6 @@
 package myBlog.repository.mapper;
 
-import model.Tag;
+import myBlog.model.Tag;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

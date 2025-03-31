@@ -1,6 +1,6 @@
 package myBlog.repository;
 
-import model.Post;
+import myBlog.model.Post;
 
 import java.util.List;
 

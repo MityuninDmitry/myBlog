@@ -1,6 +1,6 @@
 package myBlog.repository.mapper;
 
-import model.Post;
+import myBlog.model.Post;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

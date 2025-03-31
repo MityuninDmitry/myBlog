@@ -1,6 +1,6 @@
 package myBlog.repository;
 
-import model.Commentary;
+import myBlog.model.Commentary;
 
 import java.util.List;
 

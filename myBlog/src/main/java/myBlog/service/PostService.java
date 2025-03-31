@@ -1,8 +1,8 @@
 package myBlog.service;
 
-import model.Commentary;
-import model.Post;
-import model.Tag;
+import myBlog.model.Commentary;
+import myBlog.model.Post;
+import myBlog.model.Tag;
 import myBlog.repository.CommentaryRepository;
 import myBlog.repository.PostRepository;
 import myBlog.repository.TagRepository;

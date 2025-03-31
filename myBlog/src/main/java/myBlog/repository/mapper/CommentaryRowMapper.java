@@ -1,6 +1,6 @@
 package myBlog.repository.mapper;
 
-import model.Commentary;
+import myBlog.model.Commentary;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

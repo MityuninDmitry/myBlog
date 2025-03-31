@@ -1,9 +1,7 @@
 package myBlog.controller;
 
-import model.Post;
-import model.Tag;
+import myBlog.model.Post;
 import myBlog.service.PostService;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
