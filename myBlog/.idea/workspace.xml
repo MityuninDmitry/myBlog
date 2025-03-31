@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8a1fc6e-adbc-44f7-a39d-2436d97bffba" name="Changes" comment="Дизайн кнопок выбора пагинации и кнопки внизу назад/далее. Контроллер пагинации, сервис пагинации, класс пагинации. Доработка основного контроллера, чтобы он подсовывал дефолтную пагинацию на старте">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/myBlog/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/myBlog/controller/HomeController.java" afterDir="false" />
+    <list default="true" id="e8a1fc6e-adbc-44f7-a39d-2436d97bffba" name="Changes" comment="Реализация пагинации на уровне сервиса и репозитория">
+      <change beforePath="$PROJECT_DIR$/src/main/java/myBlog/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/myBlog/controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/myBlog/model/PostRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/myBlog/model/PostRecord.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/myBlog/repository/H2PostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/myBlog/repository/H2PostRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/myBlog/repository/PostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/myBlog/repository/PostRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/myBlog/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/myBlog/service/PostService.java" afterDir="false" />
@@ -181,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743452644563</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Реализация пагинации на уровне сервиса и репозитория">
+      <option name="closed" value="true" />
+      <created>1743453426596</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1743453426596</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -197,6 +205,7 @@
     <MESSAGE value="Логика добавления нового поста из ленты, форма добавления поста и сортировка постов" />
     <MESSAGE value="Логика удаления комментария с поста" />
     <MESSAGE value="Дизайн кнопок выбора пагинации и кнопки внизу назад/далее. Контроллер пагинации, сервис пагинации, класс пагинации. Доработка основного контроллера, чтобы он подсовывал дефолтную пагинацию на старте" />
-    <option name="LAST_COMMIT_MESSAGE" value="Дизайн кнопок выбора пагинации и кнопки внизу назад/далее. Контроллер пагинации, сервис пагинации, класс пагинации. Доработка основного контроллера, чтобы он подсовывал дефолтную пагинацию на старте" />
+    <MESSAGE value="Реализация пагинации на уровне сервиса и репозитория" />
+    <option name="LAST_COMMIT_MESSAGE" value="Реализация пагинации на уровне сервиса и репозитория" />
   </component>
 </project>
