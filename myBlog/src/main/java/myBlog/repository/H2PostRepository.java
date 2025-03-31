@@ -65,6 +65,18 @@ public class H2PostRepository  implements PostRepository{
         return keyHolder.getKey().longValue();
     }
 
+    @Override
+    public void update(Long id, PostRequest postRequest) {
+        String query = "update Post SET name = ?, description = ?, imageURL = ? where id = ?";
+        jdbcTemplate.update(query,postRequest.name(), postRequest.description(), postRequest.imageURL(), id);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        String query = "delete from post where id = ?";
+        jdbcTemplate.update(query, id);
+    }
+
 
 }
 

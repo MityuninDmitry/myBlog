@@ -67,18 +67,64 @@
     });
   });
 });
+      function showForm() {
+            const postName = '[[${post.name}]]' + '';
+            const postDescription = '[[${post.description}]]';
+            const postTags = '[[${tagsArray}]]';
+
+            const postImageURL = '[[${post.imageURL}]]';
+
+            document.getElementById('name').value = postName;
+            document.getElementById('description').value = postDescription;
+            document.getElementById('tags').value = postTags;
+            document.getElementById('imageURL').value = postImageURL;
+
+            document.getElementById('postForm').style.display = 'block';
+
+        }
+
+        function hideForm() {
+            document.getElementById('postForm').style.display = 'none';
+        }
 
   </script>
 </head>
 <body>
 <div class="post-container">
   <div class="post">
+    <div class="post-meta">
+      <!-- Ссылка к списку постов -->
+      <a th:href="@{/}" th:text="'Вернуться к постам'"></a>
+      <!-- Ссылка удаления поста -->
+      <a th:href="@{/posts/delete/{id}(id=${post.id})}" th:text="'Удалить'"></a>
+      <!-- Кнопка редактирования поста -->
+      <button onclick="showForm()">Редактировать пост</button>
+    </div>
     <!-- Название поста -->
     <h2 class="post-title" th:text="${post.name}">Post Name</h2>
 
+    <!-- Форма редактирования поста -->
+    <div class="form-container" id="postForm" style="display: none;">
+      <form th:action="@{/posts/update/{id}(id=${post.id})}" th:method="post">
+        <label for="name">Название:</label>
+        <input type="text" id="name" name="name" placeholder="Введите название" required>
+        <label for="description">Описание:</label>
+        <textarea id="description" name="description" placeholder="Введите описание" required></textarea>
+
+        <label for="tags">Теги (через запятую):</label>
+        <input type="text" id="tags" name="tags" placeholder="Введите теги">
+
+        <label for="imageURL">URL изображения:</label>
+        <input type="url" id="imageURL" name="imageURL" placeholder="Введите URL изображения">
+
+        <button type="submit" class="save-btn">Сохранить</button>
+        <button type="button" class="cancel-btn" onclick="hideForm()">Отмена</button>
+      </form>
+    </div>
+
+
     <!-- Изображение -->
     <img class="post-image" th:src="${post.imageURL}" alt="Example Image" />
-
     <!-- Список тегов, количество комментариев и лайков -->
     <div class="post-meta">
       <p class="tags">

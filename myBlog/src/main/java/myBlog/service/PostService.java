@@ -52,11 +52,26 @@ public class PostService {
 
     public void createNewPost(PostRequest postRequest) {
         Long post_id = postRepository.create(postRequest);
+        this.createTagsInPost(post_id, postRequest.tags());
+    }
 
-        String[] tags = postRequest.tags().replaceAll("#","").split(",");
+    public void updatePost(Long id, PostRequest postRequest) {
+        postRepository.update(id, postRequest);
+    }
+
+    public void deleteTagsByPostId(Long id) {
+        tagRepository.deleteTagsByPostId(id);
+    }
+
+    public void createTagsInPost(Long post_id, String tagsByComma) {
+        String[] tags = tagsByComma.replaceAll("#","").split(",");
         for (String tag: tags) {
             String newTag = tag.trim().replaceAll("\\s{1,}","_");
             tagRepository.createLinkedTag(post_id, newTag);
         }
+    }
+
+    public void deleteById(Long id) {
+        postRepository.deleteById(id);
     }
 }

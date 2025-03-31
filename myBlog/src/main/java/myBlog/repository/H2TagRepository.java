@@ -29,4 +29,10 @@ public class H2TagRepository implements TagRepository{
         jdbcTemplate.update(query,
                 post_id, name);
     }
+
+    @Override
+    public void deleteTagsByPostId(Long post_id) {
+        String query = "delete from tag where post_id = ?";
+        jdbcTemplate.update(query,post_id);
+    }
 }

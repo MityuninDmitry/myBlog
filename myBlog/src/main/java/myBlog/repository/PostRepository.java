@@ -10,4 +10,6 @@ public interface PostRepository {
     Post getById(Long id);
     void incrementLikeCounterById(Long id);
     Long create(PostRequest postRequest);
+    void update(Long id, PostRequest postRequest);
+    void deleteById(Long id);
 }
