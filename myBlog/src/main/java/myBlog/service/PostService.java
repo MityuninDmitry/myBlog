@@ -16,15 +16,26 @@ public class PostService {
     private final PostRepository postRepository;
     private final CommentaryRepository commentaryRepository;
     private final TagRepository tagRepository;
+    private final PaginationService paginationService;
 
-    public PostService(PostRepository repository, CommentaryRepository commentaryRepository, TagRepository tagRepository) {
+    public PostService(PostRepository repository, CommentaryRepository commentaryRepository, TagRepository tagRepository, PaginationService paginationService) {
         this.postRepository = repository;
         this.commentaryRepository = commentaryRepository;
         this.tagRepository = tagRepository;
+        this.paginationService = paginationService;
     }
 
     public List<Post> findAll() {
         List<Post> posts = this.postRepository.findAll();
+        for (Post post: posts) {
+            post.setCommentaries(loadCommentaries(post.getId()));
+            post.setTags(loadTags(post.getId()));
+        }
+        return posts;
+    }
+
+    public List<Post> findAllPaginated() {
+        List<Post> posts = this.postRepository.findAllPaginated(paginationService.getPagination().getSize(),paginationService.getPagination().getPage());
         for (Post post: posts) {
             post.setCommentaries(loadCommentaries(post.getId()));
             post.setTags(loadTags(post.getId()));

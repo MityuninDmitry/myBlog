@@ -30,6 +30,14 @@ public class H2PostRepository  implements PostRepository{
     }
 
     @Override
+    public List<Post> findAllPaginated(int size, int page) {
+        int offset = size * page;
+        String query = "select id, name, description, likeCounter, imageURL, createDateTime from Post order by createdatetime asc limit ? offset ?";
+        List<Post> posts = jdbcTemplate.query(query, new Object[]{size, offset}, new PostRowMapper());
+        return posts;
+    }
+
+    @Override
     public Post getById(Long id) {
         String query = "select id, name, description, likeCounter, imageURL, createDateTime from Post where id = ?";
         Post post = jdbcTemplate.queryForObject(query, new Object[]{id}, new PostRowMapper());

@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface PostRepository {
     List<Post> findAll();
+    List<Post> findAllPaginated(int size, int page);
     Post getById(Long id);
     void incrementLikeCounterById(Long id);
     Long create(PostRequest postRequest);

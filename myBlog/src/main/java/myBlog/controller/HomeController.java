@@ -24,7 +24,7 @@ public class HomeController {
     @GetMapping("/")
     public String getAllPosts(Model model) {
 
-        List<Post> posts = postService.findAll();
+        List<Post> posts = postService.findAllPaginated();
 
         model.addAttribute("posts", posts);
         model.addAttribute("pagination", paginationService.getPagination());
