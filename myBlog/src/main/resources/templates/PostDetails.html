@@ -69,7 +69,7 @@
 });
       function showForm() {
             const postName = '[[${post.name}]]' + '';
-            const postDescription = '[[${post.description}]]';
+            const postDescription = '[[${#strings.escapeJavaScript(post.description)}]]';
             const postTags = '[[${tagsArray}]]';
 
             const postImageURL = '[[${post.imageURL}]]';
@@ -135,7 +135,7 @@
       <a th:href="@{/posts/like/{id}(id=${post.id})}" th:text="'Поставить лайк'"></a>
     </div>
     <!-- Описание -->
-    <p class="post-description" th:text="${post.description}">Post Description</p>
+    <p class="post-description" th:utext="${#strings.replace(post.description, '\n', '<br/>')}">Post Description</p>
     <!-- Список комментариев -->
     <div>
       <div class="post-meta">
