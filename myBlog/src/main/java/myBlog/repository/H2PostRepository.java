@@ -36,6 +36,19 @@ public class H2PostRepository  implements PostRepository{
     }
 
     @Override
+    public List<Post> findAllPaginatedByTag(int size, int page, String name) {
+        int offset = size * page;
+        String query = "" +
+                "select p.id, p.name, p.description, p.likeCounter, p.imageURL, p.createDateTime " +
+                "from Post p inner join Tag t on p.id = t.post_id " +
+                "where t.name = ? " +
+                "order by p.createdatetime " +
+                "asc limit ? offset ?";
+        List<Post> posts = jdbcTemplate.query(query, new Object[]{name, size, offset}, new PostRowMapper());
+        return posts;
+    }
+
+    @Override
     public Post getById(Long id) {
         String query = "select id, name, description, likeCounter, imageURL, createDateTime from Post where id = ?";
         Post post = jdbcTemplate.queryForObject(query, new Object[]{id}, new PostRowMapper());

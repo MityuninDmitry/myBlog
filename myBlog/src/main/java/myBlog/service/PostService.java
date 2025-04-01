@@ -17,12 +17,14 @@ public class PostService {
     private final CommentaryRepository commentaryRepository;
     private final TagRepository tagRepository;
     private final PaginationService paginationService;
+    private final TagService tagService;
 
-    public PostService(PostRepository repository, CommentaryRepository commentaryRepository, TagRepository tagRepository, PaginationService paginationService) {
+    public PostService(PostRepository repository, CommentaryRepository commentaryRepository, TagRepository tagRepository, PaginationService paginationService, TagService tagService) {
         this.postRepository = repository;
         this.commentaryRepository = commentaryRepository;
         this.tagRepository = tagRepository;
         this.paginationService = paginationService;
+        this.tagService = tagService;
     }
 
     public List<Post> findAll() {
@@ -34,8 +36,14 @@ public class PostService {
         return posts;
     }
 
-    public List<Post> findAllPaginated() {
-        List<Post> posts = this.postRepository.findAllPaginated(paginationService.getPagination().getSize(),paginationService.getPagination().getPage());
+    public List<Post> findAllFiltered() {
+        List<Post> posts = null;
+        if (tagService.getSelectedTag().getName().equals("")) {
+            posts = this.postRepository.findAllPaginated(paginationService.getPagination().getSize(),paginationService.getPagination().getPage());
+        } else  {
+            posts = this.postRepository.findAllPaginatedByTag(paginationService.getPagination().getSize(),paginationService.getPagination().getPage(), tagService.getSelectedTag().getName());
+        }
+
         for (Post post: posts) {
             post.setCommentaries(loadCommentaries(post.getId()));
             post.setTags(loadTags(post.getId()));

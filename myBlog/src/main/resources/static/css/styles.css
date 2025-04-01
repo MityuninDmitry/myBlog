@@ -93,3 +93,50 @@
     background-color: #4CAF50;
     color: white;
 }
+/* Контейнер для горизонтального скроллинга */
+        /* Контейнер для горизонтального скроллинга */
+.tags-container {
+    display: flex;
+    overflow-x: auto; /* Включаем горизонтальный скроллинг */
+    white-space: nowrap; /* Запрещаем перенос строк */
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}
+
+/* Стили для каждого тега */
+.tag {
+    display: inline-block;
+    margin-right: 10px; /* Расстояние между тегами */
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+/* Эффект наведения на тег */
+.tag:hover {
+    color: #0056b3;
+}
+.tags-dropdown select {
+    width: 200px; /* Ширина дропдауна */
+    padding: 8px; /* Внутренний отступ */
+    font-size: 16px; /* Размер шрифта */
+    border: 1px solid #ccc; /* Цвет рамки */
+    border-radius: 4px; /* Скруглённые углы */
+    background-color: #fff; /* Цвет фона */
+    cursor: pointer; /* Указатель мыши */
+}
+
+.tags-dropdown select:focus {
+    border-color: #007bff; /* Цвет рамки при фокусе */
+    outline: none; /* Убираем стандартный контур браузера */
+}
+
+.tags-dropdown option {
+    padding: 8px;
+}
+
+
+

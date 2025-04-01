@@ -8,7 +8,6 @@ public class PaginationService {
 
     private final Pagination pagination;
 
-
     public PaginationService(Pagination pagination) {
         this.pagination = pagination;
     }
