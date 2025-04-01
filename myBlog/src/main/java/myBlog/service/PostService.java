@@ -85,8 +85,11 @@ public class PostService {
     public void createTagsInPost(Long post_id, String tagsByComma) {
         String[] tags = tagsByComma.replaceAll("#","").split(",");
         for (String tag: tags) {
-            String newTag = tag.trim().replaceAll("\\s{1,}","_");
-            tagRepository.createLinkedTag(post_id, newTag);
+            if (!tag.equals("")) {
+                String newTag = tag.trim().replaceAll("\\s{1,}","_");
+                tagRepository.createLinkedTag(post_id, newTag);
+            }
+
         }
     }
 
