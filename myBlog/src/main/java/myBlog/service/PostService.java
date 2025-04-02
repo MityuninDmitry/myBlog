@@ -7,6 +7,7 @@ import myBlog.model.Tag;
 import myBlog.repository.CommentaryRepository;
 import myBlog.repository.PostRepository;
 import myBlog.repository.TagRepository;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

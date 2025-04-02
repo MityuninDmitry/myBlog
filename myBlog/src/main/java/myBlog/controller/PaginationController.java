@@ -17,8 +17,7 @@ public class PaginationController {
     }
 
     @GetMapping
-    public String handlePagination(@RequestParam("size") int size, @RequestParam("page") int page, Model model) {
-        // Добавьте данные в модель, чтобы передать их в представление (если нужно)
+    public String handlePagination(@RequestParam("size") int size, @RequestParam("page") int page) {
         paginationService.updatePagination(size, page);
         return "redirect:/";
     }
