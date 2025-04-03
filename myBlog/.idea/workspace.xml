@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8a1fc6e-adbc-44f7-a39d-2436d97bffba" name="Changes" comment="Интеграционные тесты">
-      <change afterPath="$PROJECT_DIR$/src/test/java/myBlog/controller/HomeControllerIntegrationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/myBlog/repository/H2CommentaryRepositoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/myBlog/repository/H2PostRepositoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/myBlog/repository/H2TagRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/myBlog/controller/PostControllerIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/myBlog/controller/PostControllerIntegrationTest.java" afterDir="false" />
+    <list default="true" id="e8a1fc6e-adbc-44f7-a39d-2436d97bffba" name="Changes" comment="Тесты для репозиториев">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,7 +245,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743623412656</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Тесты для репозиториев">
+      <option name="closed" value="true" />
+      <created>1743707128643</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1743707128643</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -273,6 +276,7 @@
     <MESSAGE value="Правка ошибки, чтобы нельзя было создать тег без имени" />
     <MESSAGE value="Добавил readme файл" />
     <MESSAGE value="Интеграционные тесты" />
-    <option name="LAST_COMMIT_MESSAGE" value="Интеграционные тесты" />
+    <MESSAGE value="Тесты для репозиториев" />
+    <option name="LAST_COMMIT_MESSAGE" value="Тесты для репозиториев" />
   </component>
 </project>
