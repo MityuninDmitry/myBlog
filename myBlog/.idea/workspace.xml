@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8a1fc6e-adbc-44f7-a39d-2436d97bffba" name="Changes" comment="Правка ошибки, чтобы нельзя было создать тег без имени">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="e8a1fc6e-adbc-44f7-a39d-2436d97bffba" name="Changes" comment="Интеграционные тесты">
+      <change afterPath="$PROJECT_DIR$/src/test/java/myBlog/controller/HomeControllerIntegrationTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/myBlog/repository/H2CommentaryRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/myBlog/repository/H2PostRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/myBlog/repository/H2TagRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/myBlog/controller/PostControllerIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/myBlog/controller/PostControllerIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,25 +56,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/dmitrymityunin/IdeaProjects/myBlog/myBlog/src/main/resources/public&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/dmitrymityunin/IdeaProjects/myBlog/myBlog/src/test/resources"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/resources" />
       <recent name="$PROJECT_DIR$/src/main/resources/public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/static/css" />
       <recent name="$PROJECT_DIR$/src/main/resources/static" />
       <recent name="$PROJECT_DIR$/src/main/resources/css" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="myBlog.configuration" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -225,7 +234,23 @@
       <option name="project" value="LOCAL" />
       <updated>1743531563392</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Добавил readme файл">
+      <option name="closed" value="true" />
+      <created>1743532491462</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1743532491462</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Интеграционные тесты">
+      <option name="closed" value="true" />
+      <created>1743623412656</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1743623412656</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -246,6 +271,8 @@
     <MESSAGE value="UI дробдайна с тегами, сервис тегов, фильтрация по тегам, стили" />
     <MESSAGE value="Отображение описания поста с переносом строк. НА общей странцие постов описание отображается только первые 3 строки за счет стилей css" />
     <MESSAGE value="Правка ошибки, чтобы нельзя было создать тег без имени" />
-    <option name="LAST_COMMIT_MESSAGE" value="Правка ошибки, чтобы нельзя было создать тег без имени" />
+    <MESSAGE value="Добавил readme файл" />
+    <MESSAGE value="Интеграционные тесты" />
+    <option name="LAST_COMMIT_MESSAGE" value="Интеграционные тесты" />
   </component>
 </project>
