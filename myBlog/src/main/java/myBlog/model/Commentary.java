@@ -1,10 +1,15 @@
 package myBlog.model;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
 public class Commentary {
+
     private long id;
+
     private String text;
+
     private LocalDateTime createDateTime;
 
     public Commentary(long id, String text) {

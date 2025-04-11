@@ -8,8 +8,9 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
 @Repository
-public class H2CommentaryRepository implements CommentaryRepository{
+public class H2CommentaryRepository implements CommentaryRepository {
 
     private final JdbcTemplate jdbcTemplate;
 

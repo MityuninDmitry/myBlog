@@ -15,13 +15,13 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-    @Autowired
     private final PostService postService;
-    @Autowired
+
     private final PaginationService paginationService;
-    @Autowired
+
     private final TagService tagService;
 
+    @Autowired
     public HomeController(PostService postService, PaginationService paginationService, TagService tagService) {
         this.postService = postService;
         this.paginationService = paginationService;
