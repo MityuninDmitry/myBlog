@@ -23,15 +23,12 @@ public class PostService {
     @Autowired
     private final TagRepository tagRepository;
     @Autowired
-    private final PaginationService paginationService;
-    @Autowired
     private final TagService tagService;
 
-    public PostService(PostRepository repository, CommentaryRepository commentaryRepository, TagRepository tagRepository, PaginationService paginationService, TagService tagService) {
+    public PostService(PostRepository repository, CommentaryRepository commentaryRepository, TagRepository tagRepository, TagService tagService) {
         this.postRepository = repository;
         this.commentaryRepository = commentaryRepository;
         this.tagRepository = tagRepository;
-        this.paginationService = paginationService;
         this.tagService = tagService;
     }
 
@@ -44,12 +41,12 @@ public class PostService {
         return posts;
     }
 
-    public List<Post> findAllFiltered() {
+    public List<Post> findAllFiltered(int page, int size, String selectedTag) {
         List<Post> posts = null;
-        if (tagService.getSelectedTag().getName().equals("")) {
-            posts = this.postRepository.findAllPaginated(paginationService.getPagination().getSize(),paginationService.getPagination().getPage());
+        if (selectedTag == null || selectedTag.equals("")) {
+            posts = this.postRepository.findAllPaginated(size,page);
         } else  {
-            posts = this.postRepository.findAllPaginatedByTag(paginationService.getPagination().getSize(),paginationService.getPagination().getPage(), tagService.getSelectedTag().getName());
+            posts = this.postRepository.findAllPaginatedByTag(size,page,selectedTag);
         }
 
         for (Post post: posts) {

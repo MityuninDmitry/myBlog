@@ -12,23 +12,12 @@ public class TagService {
 
     @Autowired
     private final TagRepository tagRepository;
-    @Autowired
-    private final Tag selectedTag;
 
-    public TagService(TagRepository tagRepository, Tag selectedTag) {
+    public TagService(TagRepository tagRepository) {
         this.tagRepository = tagRepository;
-        this.selectedTag = selectedTag;
     }
 
     public List<Tag> distinctTags() {
         return tagRepository.distinctTags();
-    }
-
-    public void setSelectedTag(String name) {
-        selectedTag.setName(name);
-    }
-
-    public Tag getSelectedTag() {
-        return selectedTag;
     }
 }

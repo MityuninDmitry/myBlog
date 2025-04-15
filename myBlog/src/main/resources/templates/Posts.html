@@ -17,10 +17,14 @@
                 form.classList.remove('active');
                 form.querySelectorAll('input, textarea').forEach(input => input.value = '');
             }
-             function handleTagSelection(selectElement) {
+
+            function handleTagSelection(selectElement) {
                 // Получаем выбранное значение
                 const selectedTag = selectElement.value;
-                window.location.href = '/myBlog/tag/' + selectedTag;
+                const size = selectElement.dataset.size; // Получаем paginationSize
+
+                const url = '/myBlog/?selectedTag=' + selectedTag + '&page=0&size=' + size;
+                window.location.href = url;
             }
 
         </script>
@@ -41,16 +45,19 @@
             <div class="post">
                 <!-- Дропдаун с тегами-->
                 <div class="tags-dropdown">
-                    <select id="tagsDropdown" name="tag" onchange="handleTagSelection(this)">
+                    <select id="tagsDropdown"
+                            name="tag"
+                            onchange="handleTagSelection(this)"
+                            th:data-size="${paginationSize}">
                         <!-- Пустой тег, чтобы отображать все-->
                         <option th:value="''" th:text="'Выберите тег'"
-                                th:selected="${selectedTag == null or selectedTag.name == ''}">
+                                th:selected="${selectedTag == null or selectedTag == ''}">
                         </option>
                         <!-- Список тегов. Если выбран, то показывай выбранный-->
                         <option th:each="tag : ${tags}"
                                 th:value="${tag.name}"
                                 th:text="'#' + ${tag.name}"
-                                th:selected="${selectedTag != null and tag.name == selectedTag.name}">
+                                th:selected="${selectedTag != null and tag.name == selectedTag}">
                         </option>
                     </select>
                 </div>
@@ -61,22 +68,22 @@
         <div class="post-container">
             <div class="post">
                 <div class="post-meta">
-                    <p>Постов на странице: <span th:text="${pagination.size}"></span></p>
-                    <p>Страница: <span th:text="${pagination.page}"></span></p>
+                    <p>Постов на странице: <span th:text="${paginationSize}"></span></p>
+                    <p>Страница: <span th:text="${paginationPage}"></span></p>
                     <div>
                         <!-- Ссылка "Назад" -->
-                        <a th:href="@{/pagination(size=${pagination.size}, page=${pagination.page > 0 ? pagination.page - 1 : 0})}"
+                        <a th:href="@{/(size=${paginationSize}, page=${paginationPage > 0 ? paginationPage - 1 : 0}, selectedTag=${selectedTag})}"
                            th:text="'<< Назад'">
                         </a> |
                         <!-- Ссылка "Далее" -->
-                        <a th:href="@{/pagination(size=${pagination.size}, page=${pagination.page + 1})}"
+                        <a th:href="@{/(size=${paginationSize}, page=${paginationPage + 1}, selectedTag=${selectedTag})}"
                            th:text="'Далее >>'">
                         </a>
                     </div>
                     <div>
-                        <a th:href="@{/pagination?size=10&page=0}" th:text="'10'"></a> |
-                        <a th:href="@{/pagination?size=20&page=0}" th:text="'20'"></a> |
-                        <a th:href="@{/pagination?size=50&page=0}" th:text="'50'"></a>
+                        <a th:href="@{/(size=10, page=0, selectedTag=${selectedTag})}" th:text="'10'"></a> |
+                        <a th:href="@{/(size=20, page=0, selectedTag=${selectedTag})}" th:text="'20'"></a> |
+                        <a th:href="@{/(size=50, page=0, selectedTag=${selectedTag})}" th:text="'50'"></a>
                     </div>
                 </div>
             </div>
@@ -117,7 +124,7 @@
                     <p class="tags">
                         <!-- <span th:each="tag : ${post.tags}" th:text="'#' + ${tag.name} + ' '"></span>-->
                         <span th:each="tag : ${post.tags}">
-                            <a th:href="@{/tag/{name}(name=${tag.name})}" th:text="'#' + ${tag.name}"></a>
+                            <a th:href="@{/(size=${paginationSize}, page=${paginationPage}, selectedTag=${tag.name})}" th:text="'#' + ${tag.name}"></a>
                             <!-- Добавляем пробел между тегами -->
                         <span> </span> </span>
                     </p>
@@ -137,15 +144,15 @@
             <div class="post">
                 <div class="post-meta">
                     <!-- Ссылка "Назад" -->
-                    <a th:href="@{/pagination(size=${pagination.size}, page=${pagination.page > 0 ? pagination.page - 1 : 0})}"
+                    <a th:href="@{/(size=${paginationSize}, page=${paginationPage > 0 ? paginationPage - 1 : 0}, selectedTag=${selectedTag})}"
                        th:text="'<< Назад'">
                     </a>
 
-                    <p>Постов на странице: <span th:text="${pagination.size}"></span></p>
-                    <p>Страница: <span th:text="${pagination.page}"></span></p>
+                    <p>Постов на странице: <span th:text="${paginationSize}"></span></p>
+                    <p>Страница: <span th:text="${paginationPage}"></span></p>
 
                     <!-- Ссылка "Далее" -->
-                    <a th:href="@{/pagination(size=${pagination.size}, page=${pagination.page + 1})}"
+                    <a th:href="@{/(size=${paginationSize}, page=${paginationPage + 1}, selectedTag=${selectedTag})}"
                        th:text="'Далее >>'">
                     </a>
                 </div>
