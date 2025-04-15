@@ -1,5 +1,6 @@
 package myBlog.controller;
 
+import myBlog.TestUtils;
 import myBlog.service.PostService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,23 +36,25 @@ public class LikeControllerIntegrationTest {
 
     @BeforeEach
     void setUp() {
-        jdbcTemplate.execute("delete from Post");
-        jdbcTemplate.execute("INSERT INTO Post (id, name, description, likeCounter, imageURL, createDateTime) VALUES (1,'Post 1', 'Description', 10, 'https://cdn.dlcompare.com/others_jpg/upload/news/image/v-cyberpunk-2077-mojno-igrat-kak-v-gta-no-ne-bez-posledstviy-image-116915b0a.jpeg.webp', CURRENT_TIMESTAMP);");
+        TestUtils.deleteAllPostsFromDB(jdbcTemplate);
+        TestUtils.insertPostsToDB(jdbcTemplate, 1);
     }
 
     @Test
     void incrementLikeCounterById_shouldIncrementCounterAndRedirectToPost() throws Exception {
-        mockMvc.perform(get("/posts/like/1"))
-                .andExpect(redirectedUrl("/posts/1"));
-        assertEquals(11,postService.getById(1L).getLikeCounter());
+        long somePostId = postService.findAll().getFirst().getId();
+        mockMvc.perform(get("/posts/like/" + somePostId))
+                .andExpect(redirectedUrl("/posts/" + somePostId));
+        assertEquals(11,postService.getById(somePostId).getLikeCounter());
     }
 
     @Test
     void incrementLikeCounterById_fewTimes() throws Exception {
-        mockMvc.perform(get("/posts/like/1"));
-        mockMvc.perform(get("/posts/like/1"));
+        long somePostId = postService.findAll().getFirst().getId();
+        mockMvc.perform(get("/posts/like/" + somePostId));
+        mockMvc.perform(get("/posts/like/" + somePostId));
 
-        assertEquals(12,postService.getById(1L).getLikeCounter());
+        assertEquals(12,postService.getById(somePostId).getLikeCounter());
     }
 
 

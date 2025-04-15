@@ -1,5 +1,6 @@
 package myBlog.repository;
 
+import myBlog.TestUtils;
 import myBlog.model.Commentary;
 import myBlog.model.Post;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,29 +35,10 @@ public class H2CommentaryRepositoryTest {
 
     @BeforeEach
     void setUp() {
-        jdbcTemplate.execute("DELETE FROM Post");
-        jdbcTemplate.execute("DELETE FROM Commentary");
-        for (int i = 0; i < 10; i++) {
+        TestUtils.deleteAllPostsFromDB(jdbcTemplate);
+        TestUtils.deleteAllCommentaryFromDB(jdbcTemplate);
+        TestUtils.insertPostsToDBWithComments(jdbcTemplate, 10);
 
-            String postQuery = "INSERT INTO Post (name, description, likeCounter, imageURL, createDateTime) values(?, ?, ?, ?, ?)";
-            // Создаём KeyHolder для хранения сгенерированного ключа
-            KeyHolder keyHolder = new GeneratedKeyHolder();
-            final long id = i;
-            // Выполняем запрос с использованием PreparedStatement
-            jdbcTemplate.update(connection -> {
-                var ps = connection.prepareStatement(postQuery, new String[]{"id"}); // Указываем, что хотим вернуть столбец "id"
-                ps.setString(1, "Post " + id);
-                ps.setString(2, "someDesc");
-                ps.setInt(3, 0);
-                ps.setString(4, "https://someImage.jpg");
-                ps.setObject(5, LocalDateTime.now());
-                return ps;
-            }, keyHolder);
-
-            String query = "insert into commentary(post_id, text, createDateTime) values(?, ?, ?)";
-            jdbcTemplate.update(query,
-                    keyHolder.getKey().longValue(), "SomeCommentaryText " + i, LocalDateTime.now());
-        }
     }
 
     @Test

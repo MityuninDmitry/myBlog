@@ -1,5 +1,6 @@
 package myBlog.controller;
 
+import myBlog.TestUtils;
 import myBlog.service.PostService;
 import myBlog.service.TagService;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,18 +35,13 @@ public class HomeControllerIntegrationTest {
     private JdbcTemplate jdbcTemplate;
     @Autowired
     private PostService postService;
-    @Autowired
-    private TagService tagService;
-
 
     @BeforeEach
     void setUp() {
-
-        jdbcTemplate.execute("delete from Post");
-        for (int i = 0; i < 150; i++) {
-            jdbcTemplate.execute("INSERT INTO Post (name, description, likeCounter, imageURL, createDateTime) VALUES ('Post 1', 'Description', 10, 'https://cdn.dlcompare.com/others_jpg/upload/news/image/v-cyberpunk-2077-mojno-igrat-kak-v-gta-no-ne-bez-posledstviy-image-116915b0a.jpeg.webp', CURRENT_TIMESTAMP);");
-        }
+        TestUtils.deleteAllPostsFromDB(jdbcTemplate);
+        TestUtils.insertPostsToDB(jdbcTemplate, 150);
     }
+
     @Test
     void getAllPosts_defaultPaginatedWithoutFilters() throws Exception {
         mockMvc.perform(get("/"))

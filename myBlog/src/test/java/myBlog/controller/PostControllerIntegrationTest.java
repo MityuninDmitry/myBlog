@@ -1,5 +1,6 @@
 package myBlog.controller;
 
+import myBlog.TestUtils;
 import myBlog.model.Post;
 import myBlog.service.PostService;
 import org.junit.jupiter.api.BeforeEach;
@@ -38,10 +39,8 @@ public class PostControllerIntegrationTest {
 
     @BeforeEach
     void setUp() {
-        jdbcTemplate.execute("delete from Post");
-        for (int i = 0; i < 150; i++) {
-            jdbcTemplate.execute("INSERT INTO Post (name, description, likeCounter, imageURL, createDateTime) VALUES ('Post 1', 'Description', 10, 'https://cdn.dlcompare.com/others_jpg/upload/news/image/v-cyberpunk-2077-mojno-igrat-kak-v-gta-no-ne-bez-posledstviy-image-116915b0a.jpeg.webp', CURRENT_TIMESTAMP);");
-        }
+        TestUtils.deleteAllPostsFromDB(jdbcTemplate);
+        TestUtils.insertPostsToDB(jdbcTemplate, 150);
     }
 
     @Test
@@ -57,8 +56,6 @@ public class PostControllerIntegrationTest {
     void deleteById_shouldDeleteItemAndRedirect() throws Exception {
         mockMvc.perform(get("/posts/delete/4"))
                 .andExpect(redirectedUrl("/"));
-
-
         assertThrowsExactly(EmptyResultDataAccessException.class, () -> postService.getById(4L));
     }
 
@@ -99,7 +96,6 @@ public class PostControllerIntegrationTest {
         assertEquals("https://updated_url.jpg",updatedPost.getImageURL());
 
         String updatedTagsString = updatedPost.getTags().stream().map(tag -> tag.getName()).collect(Collectors.joining(","));
-
 
         assertEquals("updated_tag,updated_tag2,updated_tag3",updatedTagsString);
 

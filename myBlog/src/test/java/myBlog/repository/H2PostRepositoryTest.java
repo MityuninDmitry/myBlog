@@ -1,5 +1,6 @@
 package myBlog.repository;
 
+import myBlog.TestUtils;
 import myBlog.model.Post;
 import myBlog.model.PostRecord;
 import org.junit.jupiter.api.BeforeEach;
@@ -35,27 +36,10 @@ public class H2PostRepositoryTest {
 
     @BeforeEach
     void setUp() {
-        jdbcTemplate.execute("DELETE FROM Post");
-        jdbcTemplate.execute("DELETE FROM Tag");
-        for (int i = 0; i < 150; i++) {
-            String postQuery = "INSERT INTO Post (name, description, likeCounter, imageURL, createDateTime) values(?, ?, ?, ?, ?)";
-            // Создаём KeyHolder для хранения сгенерированного ключа
-            KeyHolder keyHolder = new GeneratedKeyHolder();
-            final long id = i;
-            // Выполняем запрос с использованием PreparedStatement
-            jdbcTemplate.update(connection -> {
-                var ps = connection.prepareStatement(postQuery, new String[]{"id"}); // Указываем, что хотим вернуть столбец "id"
-                ps.setString(1, "Post " + id);
-                ps.setString(2, "someDesc");
-                ps.setInt(3, 0);
-                ps.setString(4, "https://someImage.jpg");
-                ps.setObject(5, LocalDateTime.now());
-                return ps;
-            }, keyHolder);
+        TestUtils.deleteAllPostsFromDB(jdbcTemplate);
+        TestUtils.deleteAllTagsFromDB(jdbcTemplate);
+        TestUtils.insertPostsToDBWithTags(jdbcTemplate,150);
 
-            String query = "insert into tag(post_id, name) values(?, ?)";
-            jdbcTemplate.update(query, keyHolder.getKey().longValue(), "Post"+i);
-        }
     }
 
     @Test
