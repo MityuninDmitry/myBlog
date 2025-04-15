@@ -26,6 +26,13 @@ public class H2CommentaryRepository implements CommentaryRepository {
     }
 
     @Override
+    public List<Commentary> getById(Long id) {
+        String query = "select id, text, createDateTime from Commentary where id = ?";
+        List<Commentary> commentaries = jdbcTemplate.query(query, new Object[]{id}, new CommentaryRowMapper());
+        return commentaries;
+    }
+
+    @Override
     public void addCommentToPost(Long post_id, String text) {
         LocalDateTime now = LocalDateTime.now();
         String query = "insert into commentary(post_id, text, createDateTime) values(?, ?, ?)";

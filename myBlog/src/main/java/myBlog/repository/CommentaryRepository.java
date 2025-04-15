@@ -11,6 +11,7 @@ import java.util.List;
 
 public interface CommentaryRepository  {
     List<Commentary> getByPostId( Long post_id);
+    List<Commentary> getById(Long id);
 
 
     void addCommentToPost( Long post_id,  String text);
