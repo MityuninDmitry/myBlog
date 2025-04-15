@@ -9,6 +9,7 @@ import myBlog.repository.PostRepository;
 import myBlog.repository.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -64,7 +65,7 @@ public class PostService {
         post.setTags(loadTags(post.getId()));
         return post;
     }
-
+    @Transactional
     public void incrementLikeCounterById(Long id) {
         this.postRepository.incrementLikeCounterById(id);
     }
@@ -75,20 +76,20 @@ public class PostService {
     public List<Tag> loadTags(long post_id) {
         return tagRepository.getByPostId(post_id);
     }
-
+    @Transactional
     public void createNewPost(PostRecord postRecord) {
         Long post_id = postRepository.create(postRecord);
         this.createTagsInPost(post_id, postRecord.tags());
     }
-
+    @Transactional
     public void updatePost(Long id, PostRecord postRecord) {
         postRepository.update(id, postRecord);
     }
-
+    @Transactional
     public void deleteTagsByPostId(Long id) {
         tagRepository.deleteTagsByPostId(id);
     }
-
+    @Transactional
     public void createTagsInPost(Long post_id, String tagsByComma) {
         String[] tags = tagsByComma.replaceAll("#","").split(",");
         for (String tag: tags) {
