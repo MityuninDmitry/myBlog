@@ -31,7 +31,7 @@
 - перейти в директорию с проектом командой cd 
 - в директории проекта выполнить команду ./gradlew build
 - далее выполнить команду java -jar build/libs/myBlog-v2.jar
-- Перейти по ссылке YOUR_HOST:PORT/myBlog/
+- Перейти по ссылке YOUR_HOST:PORT/myBlog/ (по дефолту http://localhost:8080/myBlog/)
 
 # Прогон тестов 
 - Перейти в директорию проекта cd 
